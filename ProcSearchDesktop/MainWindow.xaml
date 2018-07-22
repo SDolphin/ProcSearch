@@ -1,0 +1,85 @@
+﻿<Window x:Class="ProcSearchDesktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProcSearchDesktop"
+        xmlns:searchN="clr-namespace:SSearh.Common"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <ListView Name="lvwStartProc" ItemsSource="{Binding FileSList}" Background="#FFBAE5FD" Margin="10" MouseDoubleClick="lvwStartProc_MouseDoubleClick">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
+
+                                <Border Name="ItemContainer" Margin="10,5" Padding="10,5" Background="WhiteSmoke" BorderThickness="2" CornerRadius="10" BorderBrush="Black">
+                                <Grid >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                        <Image Margin="0,0,10,0" Source="{Binding IconImage}"></Image>
+
+                                        <StackPanel Grid.Column="1">
+                                            <StackPanel Orientation="Horizontal">
+                                            <TextBlock FontWeight="Bold" Text="Type : "></TextBlock>
+                                            <TextBlock Text="{Binding Type}"></TextBlock>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal">
+                                                <TextBlock FontWeight="Bold" Text="Name : "></TextBlock>
+                                            <TextBlock Text="{Binding Name}"></TextBlock>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal">
+                                                <TextBlock FontWeight="Bold" Text="Path : "></TextBlock>
+                                                <TextBlock Text="{Binding PathF}"></TextBlock>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal">
+                                                <TextBlock FontWeight="Bold" Text="Command to run : "></TextBlock>
+                                            <TextBlock Text="{Binding CommandToRun}"></TextBlock>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal">
+                                                <TextBlock FontWeight="Bold" Text="Is signature contains : "></TextBlock>
+                                            <TextBlock Text="{Binding IsSignatureContains}"></TextBlock>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal">
+                                                <TextBlock FontWeight="Bold" Text="Is correct : "></TextBlock>
+                                            <TextBlock Text="{Binding IsCorrect}"></TextBlock>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal">
+                                                <TextBlock FontWeight="Bold" Text="Sign campany : "></TextBlock>
+                                            <TextBlock Text="{Binding SignCompany}"></TextBlock>
+                                        </StackPanel>
+
+
+                                        
+                                    </StackPanel>
+                                    
+                                </Grid>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding IsCorrect}" Value="false">
+                                        <Setter Property="Background" TargetName="ItemContainer"  Value="#FFE69A9A"></Setter>
+                                    </DataTrigger>
+                                </ControlTemplate.Triggers>
+
+
+
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListView>
+    </Grid>
+</Window>
